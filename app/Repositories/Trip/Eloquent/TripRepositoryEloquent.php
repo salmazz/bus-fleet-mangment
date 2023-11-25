@@ -14,6 +14,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
  */
 class TripRepositoryEloquent extends BaseRepository implements TripRepository
 {
+    protected $fieldSearchable = ['origin_city_id', 'destination_city_id', 'bus_id', 'date'];
     /**
      * Specify Model class name
      *

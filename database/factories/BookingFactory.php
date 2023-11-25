@@ -27,8 +27,8 @@ class BookingFactory extends Factory
             'trip_id' => function(){ return Trip::factory()->create();}, // Adjust according to your trips range
             'seat_id' => function(){ return Seat::factory()->create();}, // Adjust according to your trips range
             'user_id' => function(){ return User::factory()->create();}, // Adjust according to your trips range
-            'start_city_id' => function(){ return City::factory()->create();}, // Adjust according to your trips range
-            'end_city_id' => function(){ return City::factory()->create();}
+            'origin_city_id' => function(){ return City::factory()->create();}, // Adjust according to your trips range
+            'destination_city_id' => function(){ return City::factory()->create();}
 
         ];
     }

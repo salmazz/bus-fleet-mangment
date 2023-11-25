@@ -15,6 +15,11 @@ use Prettus\Repository\Criteria\RequestCriteria;
 class BookingRepositoryEloquent extends BaseRepository implements BookingRepository
 {
     /**
+     * @var string[]
+     */
+    protected $fieldSearchable = ['trip_id', 'seat_id', 'user_id', 'origin_city_id', 'destination_city_id'];
+
+    /**
      * Specify Model class name
      *
      * @return string

@@ -24,9 +24,8 @@ class BookingSeatRequest extends FormRequest
         return [
             'trip_id' => 'required|exists:trips,id',
             'seat_id' => 'required|exists:seats,id',
-            'user_id' => 'required|exists:users,id',
-            'start_city_id' => 'required|exists:cities,id',
-            'end_city_id' => 'required|exists:cities,id'
+            'origin_city_id' => 'required|exists:cities,id',
+            'destination_city_id' => 'required|exists:cities,id'
         ];
     }
 }

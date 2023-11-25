@@ -26,7 +26,6 @@ class SeatFactory extends Factory
             },
             'seat_number' => $this->faker->unique()->numberBetween(1, 50), // Unique seat numbers
             'is_available' => $this->faker->boolean(80) // 80% chance of being true
-
         ];
     }
 }

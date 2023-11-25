@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('trip_id')->constrained('trips');
             $table->foreignId('seat_id')->constrained('seats');
             $table->foreignId('user_id')->constrained('users'); // Assuming a users table exists
-            $table->foreignId('start_city_id')->constrained('cities');
-            $table->foreignId('end_city_id')->constrained('cities');
+            $table->foreignId('origin_city_id')->constrained('cities');
+            $table->foreignId('destination_city_id')->constrained('cities');
             $table->timestamps();
         });
     }

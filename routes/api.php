@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Authcontroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,13 +19,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Login And Register end points
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
-Route::get('/available-seats', [\App\Http\Controllers\BookingController::class, 'availableSeats']);
+// Admin Area
+Route::middleware(['auth:sanctum', 'isAdmin'])->group(function () {
+    Route::get('/admin/trips', [\App\Http\Controllers\Admin\TripController::class, 'index']);
+    Route::get('/admin/booking-list', [\App\Http\Controllers\Admin\BookingController::class, 'index']);
+});
 
-// Two end points controller ,service.
-// factory for every point
-// docker sail
-// unit test
-//
-
-Route::post('/book-seat', [\App\Http\Controllers\BookingController::class, 'bookSeat']);
+// User Area
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::get('/available-seats', [\App\Http\Controllers\User\BookingController::class, 'availableSeats']);
+    Route::post('/book-seat', [\App\Http\Controllers\User\BookingController::class, 'bookSeat']);
+});
